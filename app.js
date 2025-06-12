@@ -32,6 +32,7 @@ const userRouter=require("./routes/user.js");
 
 
 const session=require("express-session");
+const MongoStore=require("connect-mongo");
 const flash=require("connect-flash");
 
 const passport=require("passport");
@@ -63,6 +64,34 @@ app.use(express.static(path.join(__dirname,"/public")));
 //     res.send("Hi, I am root");
 // }); 
 
+const store = MongoStore.create({   
+  mongoUrl: dbUrl,
+  crypto: {
+    secret: process.env.SECRET,
+  },
+  touchAfter: 24 * 3600,
+});
+
+
+store.on("error",()=>{
+  console.log("ERROR IN SESSION STORE", err)
+})
+
+const sessionOptions = {
+  store,     //now the information of store will  be saved in atlas database 
+  secret:  process.env.SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie:{
+    expires:Date.now()+7*24*60*60*1000,
+    maxAge:7*24*60*60*1000,
+    httpOnly:true
+
+  }
+};
+
+
+
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -93,14 +122,16 @@ app.use((req,res,next)=>{
 // res.send(registeredUser);
 // })
 
+// app.use((req, res, next) => {
+//   res.locals.currentUser = req.user;  
+//   next();
+// });
+
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 app.use("/",userRouter);
 
 // -------------------------------------------------------------------------------------------------------
-
-
-
 
 
 //to throw page not found
