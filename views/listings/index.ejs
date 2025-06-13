@@ -50,73 +50,84 @@
       display: flex;
       align-items: center;
     }
+    
+  .selected-filter {
+    border-bottom: 2px solid black;
+    font-weight: bold;
+    opacity: 1 !important;
+  }
+
+
   </style>
 
 
   <div id="filters">
 
-    <div class="filter">
+    <!-- <div class="filter"> -->
+      <a href="/listings?category=Rooms" class="filter text-dark text-decoration-none <% if (selectedCategory === 'Rooms') { %>selected-filter<% } %>">
+
       <div><i class="fa-solid fa-bed"></i></div>
       <p>Rooms</p>
-    </div>
+    <!-- </div> -->
+     </a>
 
-    <div class="filter">
+<a href="/listings?category=Apartment" class="filter text-dark text-decoration-none <% if (selectedCategory === 'Apartment') { %>selected-filter<% } %>">
       <!-- <div><i class="fa-solid fa-fire"></i></div> -->
       <span class="material-symbols-outlined filter-icon">
         apartment
       </span>
       <p>Apartment</p>
-    </div>
+</a>
 
-    <div class="filter">
+<a href="/listings?category=Beachfront" class="filter text-dark text-decoration-none <% if (selectedCategory === 'Beachfront') { %>selected-filter<% } %>">
       <div><i class="fa-solid fa-umbrella-beach"></i></div>
       <p>Beachfront</p>
-    </div>
+</a>
 
-    <div class="filter">
+<a href="/listings?category=Mountain" class="filter text-dark text-decoration-none <% if (selectedCategory === 'Mountain') { %>selected-filter<% } %>">
       <div><i class="fa-solid fa-mountain"></i></div>
       <p>Mountain</p>
-    </div>
+</a>
 
-    <div class="filter">
+<a href="/listings?category=Villa" class="filter text-dark text-decoration-none <% if (selectedCategory === 'Villa') { %>selected-filter<% } %>">
       <!-- <div><i class="fa-solid fa-island-tropical"></i></div> -->
       <span class="material-symbols-outlined filter-icon">
         villa
       </span>
       <p>Villa</p>
 
-    </div>
+    </a>
 
 
-    <div class="filter">
+<a href="/listings?category=Cabin" class="filter text-dark text-decoration-none <% if (selectedCategory === 'Cabin') { %>selected-filter<% } %>">
       <!-- <div><i class="material-symbols-outlined"></i></div> -->
       <div><span class="material-symbols-outlined filter-icon">Cabin</span>
       </div>
       <p>Cabin</p>
-    </div>
+    </a>
 
-    <div class="filter">
+<a href="/listings?category=Cottage" class="filter text-dark text-decoration-none <% if (selectedCategory === 'Cottage') { %>selected-filter<% } %>">
       <!-- <div><i class="fa-solid fa-fire"></i></div>
         <p>Cottage</p> -->
       <span class="material-symbols-outlined filter-icon">
         Cottage
       </span>
       <p>Cottage</p>
-    </div>
+    </a>
 
-    <div class="filter">
+<a href="/listings?category=Pool" class="filter text-dark text-decoration-none <% if (selectedCategory === 'Pool') { %>selected-filter<% } %>">
       <!-- <div><i class="fa-solid fa-fire"></i></div>
         <p>Cottage</p> -->
       <span class="material-symbols-outlined filter-icon">
         pool
       </span>
       <p>Pool</p>
-    </div>
+    </a>
 
-    <div class="filter">
+<a href="/listings?category=Trending" class="filter text-dark text-decoration-none <% if (selectedCategory === 'Trending') { %>selected-filter<% } %>">
       <div><i class="fa-solid fa-fire"></i></div>
       <p>Trending</p>
-    </div>
+</a>
 
 
     <div class="tax-toggle ">

@@ -36,6 +36,22 @@ const listingSchema = new Schema({
     type:Schema.Types.ObjectId,
     ref:"User"
   },
+
+ 
+  category: {
+  type: [String],
+  validate: {
+    validator: function (arr) {
+      const allowed = ["Rooms", "Apartment", "Beachfront", "Mountain", "Villa", "Cabin", "Cottage", "Pool", "Trending"];
+      return arr.every(cat => allowed.includes(cat));
+    },
+    message: "Invalid category selection."
+  }
+},
+
+
+
+
   geometry: {    //geoJSON form 
   type: {
     type: String, 
